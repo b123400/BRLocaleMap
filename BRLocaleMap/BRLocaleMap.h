@@ -10,4 +10,6 @@
 
 @interface BRLocaleMap : NSObject
 
+- (NSDictionary*)localeMap;
+
 @end

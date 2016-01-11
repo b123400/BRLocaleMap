@@ -28,6 +28,8 @@
 		CF011B6C1C43F9D100948323 /* libBRLocaleMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBRLocaleMap.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF011B6F1C43F9D100948323 /* BRLocaleMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLocaleMap.h; sourceTree = "<group>"; };
 		CF011B711C43F9D100948323 /* BRLocaleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLocaleMap.m; sourceTree = "<group>"; };
+		CF011B781C43FA1900948323 /* google-translate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "google-translate.json"; path = "locale-mapping/google-translate.json"; sourceTree = SOURCE_ROOT; };
+		CF011B791C43FA1900948323 /* microsoft-translate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "microsoft-translate.json"; path = "locale-mapping/microsoft-translate.json"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,8 @@
 			children = (
 				CF011B6F1C43F9D100948323 /* BRLocaleMap.h */,
 				CF011B711C43F9D100948323 /* BRLocaleMap.m */,
+				CF011B781C43FA1900948323 /* google-translate.json */,
+				CF011B791C43FA1900948323 /* microsoft-translate.json */,
 			);
 			path = BRLocaleMap;
 			sourceTree = "<group>";
