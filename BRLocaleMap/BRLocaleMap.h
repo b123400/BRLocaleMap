@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    BRLocaleMapServiceGoogle,
+    BRLocaleMapServiceMicrosoft,
+} BRLocaleMapService;
+
 @interface BRLocaleMap : NSObject
 
-- (NSDictionary*)localeMap;
++ (NSString *)locale:(NSString *)localeCode forService:(BRLocaleMapService)service;
 
 @end

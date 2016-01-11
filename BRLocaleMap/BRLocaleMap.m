@@ -10,18 +10,50 @@
 
 @implementation BRLocaleMap
 
-- (NSDictionary*)localeMap {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"google-translate"
-                                                     ofType:@"json"];
++ (NSString *)locale:(NSString *)localeCode forService:(BRLocaleMapService)service {
+    
+    NSString *path = [self pathWithService:service];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSError *error = nil;
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                          options:0
-                                                           error:&error];
-    if (error) {
-        NSLog(@"%@", [error localizedDescription]);
+                                                           error:nil];
+    for (NSString *thisLocaleCode in [self fallbacksWithLocale:localeCode]) {
+        NSDictionary *thisLocale = dict[thisLocaleCode];
+        if (thisLocale) {
+            return [thisLocale objectForKey:@"code"];
+        }
     }
-    return dict;
+    return nil;
+}
+
++ (NSString*)pathWithService:(BRLocaleMapService)service {
+    switch (service) {
+        case BRLocaleMapServiceGoogle:
+            return [[NSBundle mainBundle] pathForResource:@"google-translate"
+                                                   ofType:@"json"];
+        case BRLocaleMapServiceMicrosoft:
+            return [[NSBundle mainBundle] pathForResource:@"microsoft-translate"
+                                                   ofType:@"json"];
+            
+        default:
+            break;
+    }
+    return nil;
+}
+
+/**
+ * Generates a list of fallback locale code, e.g.
+ * Input: zh_Hant_HK
+ * Outout: [zh_Hant_HK, zh_Hant, zh]
+ */
++ (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode {
+    NSMutableArray *components = [[localeCode componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] mutableCopy];
+    NSMutableArray *results = [NSMutableArray array];
+    while (components.count) {
+        [results addObject:[components componentsJoinedByString:@"_"]];
+        [components removeLastObject];
+    }
+    return results;
 }
 
 @end
