@@ -17,3 +17,10 @@ This project maps Apple's locale codes to Google/Microsoft Translate.
 [BRLocaleMap locale:@"gsw"
          forService:BRLocaleMapServiceMicrosoft]; // returns "de"
 ```
+
+#Usage
+Add this to your Podfile
+
+```
+pod 'BRLocaleMap'
+```
