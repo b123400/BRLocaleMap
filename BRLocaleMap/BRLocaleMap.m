@@ -50,7 +50,7 @@
     NSMutableArray *components = [[localeCode componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] mutableCopy];
     NSMutableArray *results = [NSMutableArray array];
     while (components.count) {
-        [results addObject:[components componentsJoinedByString:@"_"]];
+        [results addObject:[components componentsJoinedByString:@"-_"]];
         [components removeLastObject];
     }
     return results;
