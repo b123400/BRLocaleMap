@@ -11,7 +11,7 @@
 @implementation BRLocaleMap
 
 + (NSString *)locale:(NSString *)localeCode forService:(BRLocaleMapService)service {
-    
+
     NSString *path = [self pathWithService:service];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
@@ -34,7 +34,7 @@
         case BRLocaleMapServiceMicrosoft:
             return [[NSBundle mainBundle] pathForResource:@"microsoft-translate"
                                                    ofType:@"json"];
-            
+
         default:
             break;
     }
@@ -47,11 +47,13 @@
  * Outout: [zh_Hant_HK, zh_Hant, zh]
  */
 + (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode {
-    NSMutableArray *components = [[localeCode componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] mutableCopy];
     NSMutableArray *results = [NSMutableArray array];
-    while (components.count) {
-        [results addObject:[components componentsJoinedByString:@"-_"]];
-        [components removeLastObject];
+    [results addObject: localeCode];
+    for (NSInteger i = localeCode.length - 1; i >= 0; i--) {
+        NSString *lastChar = [localeCode substringWithRange: NSMakeRange(i, 1)];
+        if ([lastChar isEqualToString: @"-"] || [lastChar isEqualToString: @"_"]) {
+            [results addObject: [localeCode substringToIndex: i]];
+        }
     }
     return results;
 }
