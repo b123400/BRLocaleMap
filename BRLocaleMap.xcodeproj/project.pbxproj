@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF011B701C43F9D100948323 /* BRLocaleMap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF011B6F1C43F9D100948323 /* BRLocaleMap.h */; };
 		CF011B721C43F9D100948323 /* BRLocaleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B711C43F9D100948323 /* BRLocaleMap.m */; };
+		CF244C6B21BE34CC007FED9F /* BRLocaleMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF244C6A21BE34CC007FED9F /* BRLocaleMapTests.m */; };
+		CF244C7021BE34D8007FED9F /* BRLocaleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B711C43F9D100948323 /* BRLocaleMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,10 +32,20 @@
 		CF011B711C43F9D100948323 /* BRLocaleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLocaleMap.m; sourceTree = "<group>"; };
 		CF011B781C43FA1900948323 /* google-translate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "google-translate.json"; path = "locale-mapping/google-translate.json"; sourceTree = SOURCE_ROOT; };
 		CF011B791C43FA1900948323 /* microsoft-translate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "microsoft-translate.json"; path = "locale-mapping/microsoft-translate.json"; sourceTree = SOURCE_ROOT; };
+		CF244C6821BE34CC007FED9F /* BRLocaleMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BRLocaleMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF244C6A21BE34CC007FED9F /* BRLocaleMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLocaleMapTests.m; sourceTree = "<group>"; };
+		CF244C6C21BE34CC007FED9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CF011B691C43F9D100948323 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF244C6521BE34CC007FED9F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				CF011B6E1C43F9D100948323 /* BRLocaleMap */,
+				CF244C6921BE34CC007FED9F /* BRLocaleMapTests */,
 				CF011B6D1C43F9D100948323 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				CF011B6C1C43F9D100948323 /* libBRLocaleMap.a */,
+				CF244C6821BE34CC007FED9F /* BRLocaleMapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,6 +82,15 @@
 				CF011B791C43FA1900948323 /* microsoft-translate.json */,
 			);
 			path = BRLocaleMap;
+			sourceTree = "<group>";
+		};
+		CF244C6921BE34CC007FED9F /* BRLocaleMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF244C6A21BE34CC007FED9F /* BRLocaleMapTests.m */,
+				CF244C6C21BE34CC007FED9F /* Info.plist */,
+			);
+			path = BRLocaleMapTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +113,23 @@
 			productReference = CF011B6C1C43F9D100948323 /* libBRLocaleMap.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		CF244C6721BE34CC007FED9F /* BRLocaleMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF244C6D21BE34CC007FED9F /* Build configuration list for PBXNativeTarget "BRLocaleMapTests" */;
+			buildPhases = (
+				CF244C6421BE34CC007FED9F /* Sources */,
+				CF244C6521BE34CC007FED9F /* Frameworks */,
+				CF244C6621BE34CC007FED9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BRLocaleMapTests;
+			productName = BRLocaleMapTests;
+			productReference = CF244C6821BE34CC007FED9F /* BRLocaleMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -101,6 +141,11 @@
 				TargetAttributes = {
 					CF011B6B1C43F9D100948323 = {
 						CreatedOnToolsVersion = 7.2;
+					};
+					CF244C6721BE34CC007FED9F = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = CC63FD9H8S;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -117,9 +162,20 @@
 			projectRoot = "";
 			targets = (
 				CF011B6B1C43F9D100948323 /* BRLocaleMap */,
+				CF244C6721BE34CC007FED9F /* BRLocaleMapTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF244C6621BE34CC007FED9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CF011B681C43F9D100948323 /* Sources */ = {
@@ -127,6 +183,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF011B721C43F9D100948323 /* BRLocaleMap.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF244C6421BE34CC007FED9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF244C7021BE34D8007FED9F /* BRLocaleMap.m in Sources */,
+				CF244C6B21BE34CC007FED9F /* BRLocaleMapTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +296,75 @@
 			};
 			name = Release;
 		};
+		CF244C6E21BE34CC007FED9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CC63FD9H8S;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BRLocaleMapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.b123400.BRLocaleMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CF244C6F21BE34CC007FED9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CC63FD9H8S;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BRLocaleMapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.b123400.BRLocaleMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -250,6 +384,16 @@
 				CF011B771C43F9D100948323 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF244C6D21BE34CC007FED9F /* Build configuration list for PBXNativeTarget "BRLocaleMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF244C6E21BE34CC007FED9F /* Debug */,
+				CF244C6F21BE34CC007FED9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
