@@ -11,7 +11,15 @@
 @implementation BRLocaleMap
 
 + (NSString *)locale:(NSString *)localeCode forService:(BRLocaleMapService)service {
+    return [BRLocaleMap sourceLocale:localeCode forService:service];
+}
 
++ (NSString *)sourceOrTargetLocale:(NSString *)localeCode forService:(BRLocaleMapService)service {
+    if (service == BRLocaleMapServiceDeepl) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"Not available for DeepL, use sourceLocale: or targetLocale: instead."
+                                     userInfo:nil];
+    }
     NSString *path = [self pathWithService:service];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
@@ -26,6 +34,50 @@
     return nil;
 }
 
++ (NSString *)sourceLocale:(NSString *)localeCode forService:(BRLocaleMapService)service {
+    if (service == BRLocaleMapServiceDeepl) {
+        NSArray<NSString *> *supportedLocale = @[@"AR",@"BG",@"CS",@"DA",@"DE",@"EL",@"EN",@"ES",@"ET",@"FI",@"FR",@"HU",@"ID",@"IT",@"JA",@"KO",@"LT",@"LV",@"NB",@"NL",@"PL",@"PT",@"RO",@"RU",@"SK",@"SL",@"SV",@"TR",@"UK",@"ZH"];
+        NSString *first2Char = [[localeCode substringToIndex:2] uppercaseString];
+        if ([supportedLocale containsObject:first2Char]) {
+            return first2Char;
+        }
+        return nil;
+    }
+    return [BRLocaleMap sourceOrTargetLocale:localeCode forService:service];
+}
+
++ (NSString *)targetLocale:(NSString *)localeCode forService:(BRLocaleMapService)service {
+    if (service == BRLocaleMapServiceDeepl) {
+        if (localeCode.length < 2) return nil;
+        NSString *underscored = [localeCode stringByReplacingOccurrencesOfString:@"-" withString:@"_"].lowercaseString;
+        if ([underscored isEqual:@"en_gb"]) {
+            return @"EN-GB";
+        }
+        if ([underscored isEqual:@"en_us"]) {
+            return @"EN-US";
+        }
+        if ([underscored isEqual:@"pt_br"]) {
+            return @"PT-BR";
+        }
+        if ([underscored isEqual:@"pt_pt"]) {
+            return @"PT-PT";
+        }
+        if ([underscored hasPrefix:@"zh_hans"]) {
+            return @"ZH-HANS";
+        }
+        if ([underscored hasPrefix:@"zh_hant"]) {
+            return @"ZH-HANT";
+        }
+        NSArray<NSString *> *supportedLocale = @[@"AR",@"BG",@"CS",@"DA",@"DE",@"EL",@"EN",@"ES",@"ET",@"FI",@"FR",@"HU",@"ID",@"IT",@"JA",@"KO",@"LT",@"LV",@"NB",@"NL",@"PL",@"PT",@"RO",@"RU",@"SK",@"SL",@"SV",@"TR",@"UK",@"ZH"];
+        NSString *first2Char = [[localeCode substringToIndex:2] uppercaseString];
+        if ([supportedLocale containsObject:first2Char]) {
+            return first2Char;
+        }
+        return nil;
+    }
+    return [BRLocaleMap sourceOrTargetLocale:localeCode forService:service];
+}
+
 + (NSString*)pathWithService:(BRLocaleMapService)service {
     switch (service) {
         case BRLocaleMapServiceGoogle:
@@ -34,7 +86,6 @@
         case BRLocaleMapServiceMicrosoft:
             return [[NSBundle mainBundle] pathForResource:@"microsoft-translate"
                                                    ofType:@"json"];
-
         default:
             break;
     }
