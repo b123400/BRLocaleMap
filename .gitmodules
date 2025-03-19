@@ -1,3 +1,0 @@
-[submodule "locale-mapping"]
-    path = locale-mapping
-    url = git://github.com/b123400/locale-mapping.git
